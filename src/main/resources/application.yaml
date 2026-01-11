@@ -1,14 +1,20 @@
 spring:
-  application:
-    name: graphql-playground
+    application:
+        name: graphql-playground
 
-  graphql:
-    schema:
-      locations: classpath:graphql/**/
+    graphql:
+        schema:
+            locations: classpath:graphql/**/
 
-    http:
-      path: /graphql
+        http:
+            path: /graphql
 
-    graphiql:
-      enabled: true
-      path: /graphiql
+        graphiql:
+            enabled: true
+            path: /graphiql
+
+    devtools:
+        restart:
+            enabled: true
+        livereload:
+            enabled: true
