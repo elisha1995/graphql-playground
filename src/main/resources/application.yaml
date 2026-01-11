@@ -4,17 +4,10 @@ spring:
 
     graphql:
         schema:
-            locations: classpath:graphql/**/
-
+            locations: classpath:graphql/**
         http:
             path: /graphql
 
         graphiql:
             enabled: true
             path: /graphiql
-
-    devtools:
-        restart:
-            enabled: true
-        livereload:
-            enabled: true
