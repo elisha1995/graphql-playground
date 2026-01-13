@@ -1,0 +1,16 @@
+extend type Query {
+    customers2: [Customer2]!
+}
+
+type Customer2 {
+    id: ID!
+    name: String
+    age: Int
+    city: String
+    orders: [CustomerOrder]!
+}
+
+type CustomerOrder {
+    id: ID!
+    description: String
+}
