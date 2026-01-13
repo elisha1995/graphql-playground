@@ -1,5 +1,6 @@
 package com.gyamtech.graphql_playground.sec01.lec02.controller;
 
+import com.gyamtech.graphql_playground.sec01.lec02.domain.AgeRangeFilter;
 import com.gyamtech.graphql_playground.sec01.lec02.domain.Customer;
 import com.gyamtech.graphql_playground.sec01.lec02.service.CustomerService;
 import org.springframework.graphql.data.method.annotation.Argument;
@@ -30,5 +31,10 @@ public class CustomerController {
     @QueryMapping
     public Flux<Customer> customersNameContains(@Argument String name) {
         return customerService.nameContains(name);
+    }
+
+    @QueryMapping
+    public Flux<Customer> customersByAgeRange(@Argument AgeRangeFilter filter) {
+        return customerService.ageRange(filter);
     }
 }

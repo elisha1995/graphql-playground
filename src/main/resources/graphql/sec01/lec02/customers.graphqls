@@ -7,8 +7,15 @@ extend type Query {
 
     # Filter customers by name
     customersNameContains(name: String!): [Customer]
+
+    # Filter customers by age range
+    customersByAgeRange(filter: AgeRangeFilter!): [Customer]!
 }
 
+input AgeRangeFilter {
+    minAge: Int!
+    maxAge: Int!
+}
 
 type Customer {
     id: ID

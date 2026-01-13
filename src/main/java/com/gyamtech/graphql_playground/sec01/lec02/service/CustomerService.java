@@ -1,5 +1,6 @@
 package com.gyamtech.graphql_playground.sec01.lec02.service;
 
+import com.gyamtech.graphql_playground.sec01.lec02.domain.AgeRangeFilter;
 import com.gyamtech.graphql_playground.sec01.lec02.domain.Customer;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
@@ -21,10 +22,16 @@ public class CustomerService {
     }
 
     public Mono<Customer> findById(Integer id) {
-        return flux.filter(customer -> customer.getId().equals(id)).next();
+        return flux.filter(customer ->
+                customer.getId().equals(id)).next();
     }
 
     public Flux<Customer> nameContains(String name) {
         return flux.filter(customer -> customer.getName().contains(name));
+    }
+
+    public Flux<Customer> ageRange(AgeRangeFilter filter) {
+        return flux.filter(customer -> customer.getAge() >= filter.getMinAge()
+                && customer.getAge() <= filter.getMaxAge());
     }
 }
