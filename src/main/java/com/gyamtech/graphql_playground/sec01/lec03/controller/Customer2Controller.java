@@ -4,6 +4,7 @@ import com.gyamtech.graphql_playground.sec01.lec02.service.OrderService;
 import com.gyamtech.graphql_playground.sec01.lec03.domain.Customer2;
 import com.gyamtech.graphql_playground.sec01.lec03.domain.CustomerOrder;
 import com.gyamtech.graphql_playground.sec01.lec03.service.Customer2Service;
+import org.springframework.graphql.data.method.annotation.Argument;
 import org.springframework.graphql.data.method.annotation.QueryMapping;
 import org.springframework.graphql.data.method.annotation.SchemaMapping;
 import org.springframework.stereotype.Controller;
@@ -27,7 +28,7 @@ public class Customer2Controller {
     }
 
     @SchemaMapping(typeName = "Customer2")
-    public Flux<CustomerOrder> orders(Customer2 customer) {
-        return orderService.ordersByCustomerName(customer.getName());
+    public Flux<CustomerOrder> orders(Customer2 customer, @Argument Integer limit) {
+        return orderService.ordersByCustomerName(customer.getName()).take(limit);
     }
 }
